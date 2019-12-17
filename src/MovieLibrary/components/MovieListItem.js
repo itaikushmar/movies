@@ -1,6 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import TMDBImage from './TMDBImage';
+import './MovieListItem.css';
+
 class MovieListItem extends React.Component {
 
     handleClick = () => {
@@ -9,10 +12,12 @@ class MovieListItem extends React.Component {
     }
   
     render() {
-      const {movie: {title, vote_average}, isSelected} = this.props;
+      const {movie: {title, poster_path, vote_average}, isSelected} = this.props;
 
       return (
-        <div className={classNames('movie-list-item', {'selected': isSelected})} onClick={this.handleClick}>{title}({vote_average})</div>
+        <div className={classNames('movie-list-item', {'selected': isSelected})} onClick={this.handleClick}>
+          <TMDBImage src={poster_path} className='thumbnail' />
+        </div>
       )
     }
   }
