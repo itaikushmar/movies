@@ -1,0 +1,21 @@
+.expanded-movie-item .poster {
+    height: 100%;
+}
+
+.description {
+    padding: 25px;
+    color: rgb(237, 232, 232);
+}
+
+.movie_title {
+    margin: 0;
+}
+
+.movie_subTitle {
+    color: rgb(209, 209, 209);
+    margin: 0;
+}
+
+.overview {
+    margin-top: 50px;
+}
