@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
+import {sortTopRatedMovies} from '../store/actions';
 
 import SortingOptions from './SortingOptions';
 import MovieListItem from './MovieListItem';
@@ -16,7 +18,9 @@ class MoviesList extends React.PureComponent {
 
   closeModal = () => this.setState({ selectedMovie: null, isModalOpen: false });
 
-  handleSortingChange = sortingType => console.log(sortingType);
+  handleSortingChange = sortingType => {
+    this.props.sortTopRatedMovies(sortingType);
+  };
 
   render() {
     const { movies } = this.props;
@@ -45,7 +49,7 @@ class MoviesList extends React.PureComponent {
           <SortingOptions onChange={this.handleSortingChange} />
         </div>
         <div className='items'>
-          {movies.map(movie => (
+          {movies.map((movie, index) => (
             <MovieListItem
               key={movie.id}
               movie={movie}
@@ -71,4 +75,4 @@ class MoviesList extends React.PureComponent {
   }
 }
 
-export default MoviesList;
+export default connect(null, {sortTopRatedMovies})(MoviesList);

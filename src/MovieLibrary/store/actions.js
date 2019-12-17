@@ -1,5 +1,5 @@
-import { FETCH_MOVIES } from '../../actionTypes';
-import topRatedMovies from '../mocks/topTatedMovies';
+import { FETCH_MOVIES, SORT_MOVIES } from '../../actionTypes';
+import {uniqBy} from 'lodash';
 import Axios from 'axios';
 
 export const fetchTopRatedMovies = () => async dispatch => {
@@ -11,8 +11,16 @@ export const fetchTopRatedMovies = () => async dispatch => {
     const { data } = await Axios.get(URL);
     response.push(...data.results);
   }
+  const uniqueResponse = uniqBy(response, 'id');
   dispatch({
     type: FETCH_MOVIES,
-    payload: response
+    payload: uniqueResponse
   });
 };
+
+export const sortTopRatedMovies = (sortType) => {
+  return {
+    type: SORT_MOVIES,
+    payload: sortType
+  }
+}
