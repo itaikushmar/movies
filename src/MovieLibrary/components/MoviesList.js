@@ -32,9 +32,9 @@ class MoviesList extends React.PureComponent {
         width: '50%',
         height: '50%',
         padding: 0,
-        boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-        backgroundColor: "rgb(107, 107, 107)",
-        border: "1px solid rgb(97, 97, 97)"
+        boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+        backgroundColor: 'rgb(107, 107, 107)',
+        border: '1px solid rgb(97, 97, 97)'
       }
     };
 
@@ -60,7 +60,9 @@ class MoviesList extends React.PureComponent {
             onRequestClose={this.closeModal}
             style={modalStyle}
           >
-          <button className='close-modal' onClick={this.closeModal}>x</button>
+            <button className='close-modal' onClick={this.closeModal}>
+              x
+            </button>
             <ExpandedMovieItem movie={selectedMovie} />
           </Modal>
         )}
