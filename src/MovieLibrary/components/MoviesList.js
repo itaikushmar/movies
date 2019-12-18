@@ -43,10 +43,7 @@ class MoviesList extends React.PureComponent {
 
     return (
       <div className='movies-list'>
-        <div>
-          <span>Sort by:</span>
-          <SortingOptions onChange={this.handleSortingChange} />
-        </div>
+        <SortingOptions onChange={this.handleSortingChange} />
         {movies.length ? (
           <div className='items'>
             {movies.map((movie) => (

@@ -1,3 +1,18 @@
+.expanded-movie-item {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+  
+.expanded-movie-item h4 {
+    display: inline;
+}
+
+.expanded-movie-item  > .description {
+    display: flex;
+    flex-direction: column;
+}
+
 .expanded-movie-item .poster {
     height: 100%;
 }

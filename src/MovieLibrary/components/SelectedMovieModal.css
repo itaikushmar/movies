@@ -1,0 +1,10 @@
+.close-modal {
+    border: 0;
+    background-color: transparent;
+    color: rgb(242, 168, 19);
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+  }

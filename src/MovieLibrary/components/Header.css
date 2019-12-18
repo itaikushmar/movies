@@ -1,0 +1,11 @@
+.ML-logo {
+    animation: ML-logo-spin infinite 8s ease;
+    height: 80px;
+}
+    
+.ML-header {
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    color: white;
+}
