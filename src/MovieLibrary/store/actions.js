@@ -1,8 +1,8 @@
 import { FETCH_MOVIES, SORT_MOVIES } from '../../actionTypes';
+import { API_KEY } from './constants';
 import Axios from 'axios';
 
 export const fetchTopRatedMovies = (page = 1) => async dispatch => {
-  const API_KEY = '54ffed57deb5a7a8688be4de3007e578';
   const numberOfPages = page + 2;
   let response = [];
   for (var i = page; i <= numberOfPages; i++) {

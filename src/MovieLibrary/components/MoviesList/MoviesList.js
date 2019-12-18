@@ -10,8 +10,8 @@ import SelectedMovieModal from '../SelectedMovieModal';
 import './MoviesList.css';
 
 class MoviesList extends React.PureComponent {
-  static propTypes = { 
-    movies: PropTypes.array.isRequired, 
+  static propTypes = {
+    movies: PropTypes.array.isRequired,
     sortTopRatedMovies: PropTypes.func.isRequired,
     fetchTopRatedMovies: PropTypes.func.isRequired
   };
@@ -24,16 +24,21 @@ class MoviesList extends React.PureComponent {
     window.addEventListener('scroll', this.onScroll, false);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
   onScroll = () => {
-    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+    const nearBottom =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
     if (nearBottom) {
       const { fetchTopRatedMovies } = this.props;
       const { page } = this.state;
       this.setState({ page: page + 2 }, () => {
         fetchTopRatedMovies(page);
-       })
+      });
     }
-  }
+  };
 
   openModal = item => this.setState({ selectedMovie: item, isModalOpen: true });
 
@@ -41,6 +46,18 @@ class MoviesList extends React.PureComponent {
 
   handleSortingChange = sortingType => {
     this.props.sortTopRatedMovies(sortingType);
+  };
+
+  renderMoviesListItems = movies => {
+    const { selectedMovie } = this.props;
+    return movies.map(movie => (
+      <MovieListItem
+        key={movie.id}
+        movie={movie}
+        isSelected={selectedMovie === movie}
+        onSelect={this.openModal}
+      />
+    ));
   };
 
   render() {
@@ -51,25 +68,25 @@ class MoviesList extends React.PureComponent {
       <div className='movies-list'>
         <SortingOptions onChange={this.handleSortingChange} />
         {movies.length ? (
-          <div className='items'>
-            {movies.map((movie) => (
-              <MovieListItem
-                key={movie.id}
-                movie={movie}
-                isSelected={selectedMovie === movie}
-                onSelect={this.openModal}
-              />
-            ))}
-          </div>
-        ) : <div>Loading...</div>}
+          <div className='items'>{this.renderMoviesListItems(movies)}</div>
+        ) : (
+          <div>Loading...</div>
+        )}
         {selectedMovie && (
-          <SelectedMovieModal isOpen={isModalOpen} closeModal={this.closeModal} selectedMovie={selectedMovie} />
+          <SelectedMovieModal
+            isOpen={isModalOpen}
+            closeModal={this.closeModal}
+            selectedMovie={selectedMovie}
+          />
         )}
       </div>
     );
   }
 }
 
-export default connect(state => ({
-  movies: getMovies(state)
-}), { sortTopRatedMovies, fetchTopRatedMovies })(MoviesList);
+export default connect(
+  state => ({
+    movies: getMovies(state)
+  }),
+  { sortTopRatedMovies, fetchTopRatedMovies }
+)(MoviesList);

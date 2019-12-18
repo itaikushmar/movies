@@ -4,26 +4,21 @@ import PropTypes from 'prop-types';
 import TMDBImage from './TMDBImage';
 import './MovieListItem.css';
 
-class MovieListItem extends React.Component {
-  static propTypes = {
-    movie: PropTypes.object.isRequired,
-    onSelect: PropTypes.func.isRequired
+const MovieListItem = ({movie, onSelect}) => {
+  const handleClick = () => {
+    onSelect(movie);
   };
 
-  handleClick = () => {
-    const { movie, onSelect } = this.props
-    onSelect(movie)
-  }
+  return (
+    <div className='movie-list-item' onClick={handleClick}>
+      <TMDBImage src={movie.poster_path} className='thumbnail' />
+    </div>
+  );
+};
 
-  render() {
-    const { movie: { poster_path } } = this.props;
-
-    return (
-      <div className='movie-list-item' onClick={this.handleClick}>
-        <TMDBImage src={poster_path} className='thumbnail' />
-      </div>
-    )
-  }
-}
+MovieListItem.propTypes = {
+  movie: PropTypes.object.isRequired,
+  onSelect: PropTypes.func.isRequired
+};
 
 export default MovieListItem;

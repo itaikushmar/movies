@@ -5,7 +5,7 @@ import MoviesList from './components/MoviesList';
 import './MovieLibrary.css';
 
 const MovieLibrary = () => (
-  <div className="MovieLibrary">
+  <div className='MovieLibrary'>
     <Header />
     <MoviesList />
   </div>

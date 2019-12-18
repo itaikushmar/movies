@@ -1,3 +1,3 @@
-import SelectedMovieModal from "./SelectedMovieModal";
+import SelectedMovieModal from './SelectedMovieModal';
 
 export default SelectedMovieModal;
