@@ -1,16 +1,21 @@
 import { FETCH_MOVIES, SORT_MOVIES } from '../../actionTypes';
+import {uniqBy} from 'lodash';
 
 const initialState = {
-  movies: []
+  movies: [],
+  page: 4
 };
 
 export default function movies(state = initialState, action) {
+  console.log(state.movies)
   const { type, payload } = action;
   switch (type) {
     case FETCH_MOVIES:
+      const newMovies = [...state.movies, ...payload]
+      const uniqueResponse = uniqBy(newMovies, 'id');
       return {
         ...state,
-        movies: payload
+        movies: uniqueResponse
       };
     case SORT_MOVIES:
       let movies = [...state.movies];
