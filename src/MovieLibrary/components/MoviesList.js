@@ -10,7 +10,11 @@ import SelectedMovieModal from './SelectedMovieModal';
 import './MoviesList.css';
 
 class MoviesList extends React.PureComponent {
-  static propTypes = { movies: PropTypes.array.isRequired };
+  static propTypes = { 
+    movies: PropTypes.array.isRequired, 
+    sortTopRatedMovies: PropTypes.func.isRequired,
+    fetchTopRatedMovies: PropTypes.func.isRequired
+  };
 
   state = { selectedMovie: null, isModalOpen: false, page: 1 };
 
@@ -23,9 +27,11 @@ class MoviesList extends React.PureComponent {
   onScroll = () => {
     const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
     if (nearBottom) {
-      this.setState({ page: this.state.page + 2 })
       const { fetchTopRatedMovies } = this.props;
-      fetchTopRatedMovies(this.state.page);
+      const { page } = this.state;
+      this.setState({ page: page + 2 }, () => {
+        fetchTopRatedMovies(page);
+       })
     }
   }
 

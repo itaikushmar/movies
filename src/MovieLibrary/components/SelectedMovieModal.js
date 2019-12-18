@@ -22,7 +22,12 @@ const modalStyle = {
 };
 
 const SelectedMovieModal = ({ isOpen, closeModal, selectedMovie }) => (
-  <Modal isOpen={isOpen} onRequestClose={closeModal} style={modalStyle}>
+  <Modal 
+    isOpen={isOpen} 
+    onRequestClose={closeModal} 
+    style={modalStyle} 
+    ariaHideApp={false}
+  >
     <button className='close-modal' onClick={closeModal}>
       x
     </button>

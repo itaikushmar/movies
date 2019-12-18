@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './MovieLibrary.css';
 import Header from './Header';
 import MoviesList from './MoviesList';
+import './MovieLibrary.css';
 
 const MovieLibrary = () => (
   <div className="MovieLibrary">

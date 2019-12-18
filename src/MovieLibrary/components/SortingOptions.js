@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './SortingOptions.css';
 
 class SortingOptions extends React.Component {
+  static propTypes = { 
+    onChange: PropTypes.func.isRequired
+  };
+
 
   state = { value: '' };
 
