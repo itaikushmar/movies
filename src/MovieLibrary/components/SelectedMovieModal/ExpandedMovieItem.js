@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TMDBImage from './TMDBImage';
+import TMDBImage from '../MoviesList/components/TMDBImage';
 import './ExpandedMovieItem.css';
 
 const ExpandedMovieItem = ({ movie: {

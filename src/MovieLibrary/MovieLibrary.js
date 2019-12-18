@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from './Header';
-import MoviesList from './MoviesList';
+import Header from './components/Header';
+import MoviesList from './components/MoviesList';
 import './MovieLibrary.css';
 
 const MovieLibrary = () => (

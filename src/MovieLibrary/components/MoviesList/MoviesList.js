@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { sortTopRatedMovies, fetchTopRatedMovies } from '../store/actions';
+import { sortTopRatedMovies, fetchTopRatedMovies } from '../../store/actions';
 
-import { getMovies } from '../store/selectors';
-import SortingOptions from './SortingOptions';
-import MovieListItem from './MovieListItem';
-import SelectedMovieModal from './SelectedMovieModal';
+import { getMovies } from '../../store/selectors';
+import SortingOptions from './components/SortingOptions';
+import MovieListItem from './components/MovieListItem';
+import SelectedMovieModal from '../SelectedMovieModal';
 import './MoviesList.css';
 
 class MoviesList extends React.PureComponent {
