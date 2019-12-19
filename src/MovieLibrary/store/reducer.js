@@ -14,6 +14,7 @@ export default function movies(state = initialState, { type, payload }) {
   switch (type) {
     case FETCH_MOVIES:
       const newMovies = [...state.movies, ...payload];
+      // uniqBy function used to prevent a situation where we get two identical items
       const uniqueResponse = uniqBy(newMovies, 'id');
       return {
         ...state,

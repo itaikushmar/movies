@@ -50,14 +50,18 @@ class MoviesList extends React.PureComponent {
 
   renderMoviesListItems = movies => {
     const { selectedMovie } = this.props;
-    return movies.map(movie => (
-      <MovieListItem
-        key={movie.id}
-        movie={movie}
-        isSelected={selectedMovie === movie}
-        onSelect={this.openModal}
-      />
-    ));
+    return movies.map(movie => {
+      return (
+        movie !== null && (
+          <MovieListItem
+            key={movie.id}
+            movie={movie}
+            isSelected={selectedMovie === movie}
+            onSelect={this.openModal}
+          />
+        )
+      )
+    });
   };
 
   render() {
@@ -70,8 +74,8 @@ class MoviesList extends React.PureComponent {
         {movies.length ? (
           <div className='items'>{this.renderMoviesListItems(movies)}</div>
         ) : (
-          <div>Loading...</div>
-        )}
+            <div>Loading...</div>
+          )}
         {selectedMovie && (
           <SelectedMovieModal
             isOpen={isModalOpen}
